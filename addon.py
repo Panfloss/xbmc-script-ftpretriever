@@ -2,16 +2,17 @@ import resources.lib.sync_ftp as sync_ftp
 import xbmc
 import xbmcaddon as xa
 
-PLUGIN_ID = "service.ftpretriever"
-addon = xa.Addon(PLUGIN_ID)
-
-settings = {}
-settings["host"] = addon.getSetting("host")
-settings["user"] = addon.getSetting("username")
-settings["passwd"] = addon.getSetting("password")
-settings["local_folder"] = "addon.getSetting("local_folder")
-settings["distant_folder"] = addon.getSetting("distant_folder")
+#PLUGIN_ID = "service.ftpretriever"
+__addon__ = xa.Addon()#PLUGIN_ID)
+__profile__ = xbmc.translatePath(__addon__.getAddonInfo('profile') ).decode("utf-8")
 
 
+host = __addon__.getSetting("host")
+user = __addon__.getSetting("username")
+passwd = __addon__.getSetting("password")
+local_folder = __addon__.getSetting("local_folder")
+distant_folder = __addon__.getSetting("distant_folder")
 
-sync_ftp.sync_folder(settings['host'], settings['user'], settings['passwd'], settings['local_folder'], settings['distant_folder'])
+
+
+sync_ftp.sync_folder(host, user, passwd, local_folder, distant_folder)
