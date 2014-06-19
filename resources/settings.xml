@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="General">
+        <setting label="FTP host URL" type="text"   id="host" default=""/>
+        <setting label="User" type="text"   id="username" default=""/>
+        <setting label="Password" type="text"   id="password" option="hidden" default=""/>
+        <setting label="Folder settings" type="lsep"/>
+        <setting label="Local folder" type="folder"   id="local_folder" default=""/>
+        <setting label="Distant folder path" type="text"   id="distant_folder" default=""/>
+    </category>
+</settings>

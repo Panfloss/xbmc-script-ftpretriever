@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="service.ftpretriever" name="XBMC FTP Retriever" version="0.0.1" provider-name="Panfloss">
+  <requires>
+    <import addon="xbmc.python" version="2.12.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Easily retrieve your files from an FTP server</summary>
+    <description lang="en">This add-on let's you retrieve your files from an FTP server. It make sure that a file is only downloaded once even after it was moved out of the local folder</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+  </extension>
+</addon>
