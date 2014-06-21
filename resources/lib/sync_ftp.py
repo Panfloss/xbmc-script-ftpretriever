@@ -76,7 +76,7 @@ def get_folder(ignore_list=""):
         os.chdir("..")
 
 
-def sync_folder(host, user, passwd, local_folder, distant_folder):
+def sync_folder(host, user, passwd, local_folder, distant_folder, ignore_list):
     """Recursivly sync a FTP folder
     It ignores links
     """
@@ -84,21 +84,11 @@ def sync_folder(host, user, passwd, local_folder, distant_folder):
     global __FTP_SES__
 
     init_ftp(host, user, passwd)
-
     os.chdir(local_folder)
-
-    try:
-        with open("ignore_list.json", "r") as file:
-            ignore_list = json.load(file)
-    except:
-        ignore_list = ""
 
     __FTP_SES__.cwd(distant_folder)
     get_folder(ignore_list)
-
     ignore_list = __FTP_SES__.nlst()
 
     __FTP_SES__.quit()
-
-    with open("ignore_list.json", "w") as file:
-        file.write(json.dumps(ignore_list, sort_keys=True, indent=4, separators=(',', ': ')))
+    return ignore_list
