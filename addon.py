@@ -12,7 +12,7 @@ __profile__ = xbmc.translatePath(__addon__.getAddonInfo('profile') ).decode("utf
 
 
 pDialog = xbmcgui.DialogProgressBG()
-pDialog.create('FTP retriever', 'Accessing credentials')
+pDialog.create(__addonname__, 'Accessing credentials')
 
 host = __addon__.getSetting("host")
 user = __addon__.getSetting("username")
