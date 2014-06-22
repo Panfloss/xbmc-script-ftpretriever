@@ -29,6 +29,7 @@ def populate_lists(file_list, folder_list):
             folder_list.append(" ".join(item.split()[8:]))
         elif item.split()[0][0] == "-":
             file_list.append(" ".join(item.split()[8:]))
+        #add the handling of symlinks?
 
     try:
         folder_list.remove(".")
@@ -70,7 +71,7 @@ def get_folder(ignore_list=""):
             os.chdir(name)
             get_folder(name)
         except:
-            pass
+            pass #if retrieving a folder is not possible just go to the next
 
         __FTP_SES__.cwd("..")
         os.chdir("..")
