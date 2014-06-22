@@ -6,3 +6,4 @@ Task List
 - [ ] prevent script from crashing if a file or a folder is not accessible
 - [ ] revent script from crashing if a folder is already synced (and check if everything in it is rightly synced : after crash recovery)
 - [ ] use multi-threading for multiple ftp syncs??
+- [ ] add a notification when the download start and when it's over
