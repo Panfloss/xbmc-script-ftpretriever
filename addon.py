@@ -25,7 +25,9 @@ try:
 except:
     ignore_list = ""
 
-ignore_list = sync_ftp.sync_folder(host, user, passwd, local_folder, distant_folder, ignore_list)
+ftpInstance = sync_ftp.FtpSession(host, user, passwd)
+
+ignore_list = ftpInstance.sync_folder(local_folder, distant_folder, ignore_list)
 
 os.chdir(__profile__)
 with open("ignore_list.json", "w") as file:

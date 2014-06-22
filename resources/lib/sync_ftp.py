@@ -2,94 +2,90 @@ import os
 import json
 from ftplib import FTP
 
-__FTP_SES__ = None
+class FtpSession(object):
 
-def init_ftp(host, user, passwd):
-    """Initiate the __FTP_SES__ global variable"""
+    _ftp = None
 
-    global __FTP_SES__
-    if __FTP_SES__ is None:
-        __FTP_SES__ = FTP(host, user=user, passwd=passwd)
-    else:
-        raise RuntimeError("a FTP session has already been activated.")
+    def __init__(self, host, user, passwd):
 
+        self._host = host
+        self._user = user
+        self._passwd = passwd
 
-def populate_lists(file_list, folder_list):
-    """Populate the file_list and folder_list
-    It assumes that __FTP_SES__.dir() will return a UNIX formated string
-    """
+    def _connect_ftp(self):
+        """initiate the ftp sesion"""
+        self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
 
-    global __FTP_SES__
+    def _populate_lists(self, file_list, folder_list):
+        """Populate the file_list and folder_list
+        It assumes that _ftp.dir() will return a UNIX formated string
+        """
 
-    complete_list = []
-    __FTP_SES__.dir(complete_list.append)
+        complete_list = []
+        self._ftp.dir(complete_list.append)
 
-    for item in complete_list:
-        if item[0] == "d":
-            folder_list.append(" ".join(item.split()[8:]))
-        elif item.split()[0][0] == "-":
-            file_list.append(" ".join(item.split()[8:]))
-        #add the handling of symlinks?
+        for item in complete_list:
+            if item[0] == "d":
+                folder_list.append(" ".join(item.split()[8:]))
+            elif item.split()[0][0] == "-":
+                file_list.append(" ".join(item.split()[8:]))
+            #add the handling of symlinks?
 
-    try:
-        folder_list.remove(".")
-        folder_list.remove("..")
-    except:
-        pass
-
-
-def get_folder(ignore_list=""):
-    """retrieve the content of a folder via FTP
-    It ignores links
-    """
-
-    global __FTP_SES__
-
-    file_list = []
-    folder_list = []
-
-    populate_lists(file_list, folder_list)
-
-    if ignore_list is not "":
-        for item in file_list:
-            if item in ignore_list:
-                file_list.remove(item)
-
-        for item in folder_list:
-            if item in ignore_list:
-                folder_list.remove(item)
-
-
-    for name in file_list:
-        with open(name, "wb") as file:
-            __FTP_SES__.retrbinary('RETR %s' % name, file.write)
-
-    for name in folder_list:
         try:
-            __FTP_SES__.cwd(name)
-            os.mkdir(name)
-            os.chdir(name)
-            get_folder(name)
+            folder_list.remove(".")
+            folder_list.remove("..")
         except:
-            pass #if retrieving a folder is not possible just go to the next
-
-        __FTP_SES__.cwd("..")
-        os.chdir("..")
+            pass
 
 
-def sync_folder(host, user, passwd, local_folder, distant_folder, ignore_list):
-    """Recursivly sync a FTP folder
-    It ignores links
-    """
+    def _get_folder(self, ignore_list=""):
+        """retrieve the content of a folder via FTP
+        It ignores links
+        """
 
-    global __FTP_SES__
+        file_list = []
+        folder_list = []
 
-    init_ftp(host, user, passwd)
-    os.chdir(local_folder)
+        self._populate_lists(file_list, folder_list)
 
-    __FTP_SES__.cwd(distant_folder)
-    get_folder(ignore_list)
-    ignore_list = __FTP_SES__.nlst()
+        if ignore_list is not "":
+            for item in file_list:
+                if item in ignore_list:
+                    file_list.remove(item)
 
-    __FTP_SES__.quit()
-    return ignore_list
+            for item in folder_list:
+                if item in ignore_list:
+                    folder_list.remove(item)
+
+
+        for name in file_list:
+            with open(name, "wb") as file:
+                self._ftp.retrbinary('RETR %s' % name, file.write)
+
+        for name in folder_list:
+            try:
+                self._ftp.cwd(name)
+                os.mkdir(name)
+                os.chdir(name)
+                self._get_folder(name)
+            except:
+                pass #if retrieving a folder is not possible just go to the next
+
+            self._ftp.cwd("..")
+            os.chdir("..")
+
+
+    def sync_folder(self, local_folder, distant_folder, ignore_list):
+        """Recursivly sync a FTP folder
+        It ignores links
+        """
+
+        self._connect_ftp()
+        os.chdir(local_folder)
+
+        self._ftp.cwd(distant_folder)
+        self._get_folder(ignore_list)
+        ignore_list = self._ftp.nlst()
+
+        self._ftp.quit()
+        return ignore_list
