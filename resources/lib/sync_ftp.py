@@ -5,8 +5,9 @@ from ftplib import FTP
 class FtpSession(object):
 
     _ftp = None
+    _tasklist = []
 
-    def __init__(self, host, user, passwd):
+    def __init__(self, host, user, passwd, tasklist = []):
 
         self._host = host
         self._user = user
@@ -15,6 +16,57 @@ class FtpSession(object):
     def _connect_ftp(self):
         """initiate the ftp sesion"""
         self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
+
+    def _is_file(self, item):
+        """Check if item is a file (True) or a folder (False)"""
+        #work well but a bit slow because a lot of ftp call
+
+        content = self._ftp.nlst(item)
+        if len(content) == 1 and content[0] == item:
+            return True
+        else:
+            return False
+
+    def _create_tasklist(self, distant_folder, ignore_list = []):
+        """Generate the list of file to get"""
+
+        for item in self._ftp.nlst(distant_folder):
+            if self._is_file(item):
+                self._tasklist.append(item)
+            else:
+                self._create_tasklist(item)
+
+    def _save_tasklist(self):
+        """save the tasklist as a json file"""
+
+        pass
+
+
+
+    def _execute_tasks(self, tasklist):
+        """Sequentialy execute download tasks"""
+
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def _populate_lists(self, file_list, folder_list):
         """Populate the file_list and folder_list

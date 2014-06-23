@@ -27,7 +27,7 @@ try:
     with open("ignore_list.json", "r") as file:
         ignore_list = json.load(file)
 except:
-    ignore_list = ""
+    ignore_list = []
 
 
 pDialog.update(10, message='File retrieving in progress...')
