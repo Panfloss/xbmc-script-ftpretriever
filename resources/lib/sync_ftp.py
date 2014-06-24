@@ -17,24 +17,27 @@ class FtpSession(object):
         """initiate the ftp sesion"""
         self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
 
-    def _is_file(self, item):
-        """Check if item is a file (True) or a folder (False)"""
+    def _is_folder(self, item):
+        """Check if item is a file (False) or a folder (return nlst(folder))"""
         #work well but a bit slow because a lot of ftp call
+        #reduce to one nlst() per file/folder
+        #do something for empty folder because nlst() will return content of current folder
 
         content = self._ftp.nlst(item)
         if len(content) == 1 and content[0] == item:
-            return True
-        else:
             return False
+        else:
+            return content
 
-    def _create_tasklist(self, distant_folder, ignore_list = []):
+    def _create_tasklist(self, folders, ignore_list = []):
         """Generate the list of file to get"""
 
-        for item in self._ftp.nlst(distant_folder):
-            if self._is_file(item):
+        for item in folders:
+            content = self._is_folder(item)
+            if content is False:
                 self._tasklist.append(item)
             else:
-                self._create_tasklist(item)
+                self._create_tasklist(content)
 
     def _save_tasklist(self):
         """save the tasklist as a json file"""

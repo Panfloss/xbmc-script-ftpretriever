@@ -1,6 +1,7 @@
 Task List
 =========
 
+- [ ] create a filter for tasklist (like .gitignore)
 - [ ] prevent script from crashing if a file or a folder is not accessible
 - [ ] prevent script from crashing if a folder is already synced (and check if everything in it is rightly synced : after crash recovery)
 - [ ] allow to sync to a smb:// or other special mount point with xbmc.cvfs
