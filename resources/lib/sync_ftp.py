@@ -90,7 +90,7 @@ class FtpSession(object):
                 self._ftp.retrbinary('RETR %s' % name, file.write)
             self._tasklist.pop(0)
             self._save_tasklist()
-            #update progressbar
+            #update progressbar - event driven or in here
 
 
     def sync_folder(self, local_folder, ftp_folders, ignore_list):
