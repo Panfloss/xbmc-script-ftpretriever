@@ -83,11 +83,12 @@ class FtpSession(object):
     def _execute_tasks(self):
         """Sequentialy execute download tasks"""
 
-        for file_path in self._tasklist:
+        while self._tasklist != "":
+            file_path = self._tasklist[0]
             self._create_hierarchy(file_path)
             with open(file_path, "wb") as file:
                 self._ftp.retrbinary('RETR %s' % name, file.write)
-            self._tasklist.remove(file_path)
+            self._tasklist.pop(0)
             self._save_tasklist()
             #update progressbar
 
