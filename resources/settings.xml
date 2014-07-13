@@ -7,7 +7,7 @@
         <setting label="Password" type="text"   id="password0" option="hidden" default="" enable="eq(-3,true)"/>
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder0" default="" enable="eq(-5,true)"/>
-        <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders5" default="" enable="eq(-6,true)"/>
+        <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders0" default="" enable="eq(-6,true)"/>
         <setting label="Ignore List" type="text"   id="ignore_list0" default="" visible="false" enable="eq(-7,true)"/>
         <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-8,true)"/>
     </category>

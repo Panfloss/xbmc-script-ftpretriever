@@ -22,6 +22,9 @@ def getSettings():
 
             profiles[i]["ftp_folders"] = __addon__.getSetting("distant_folders" + str(i))
             profiles[i]["ftp_folders"] = profiles[i]["ftp_folders"].split(",")
+            for j in range(len(profiles[i]["ftp_folders"])): #remove whitespace at the begining of folderpath
+                while profiles[i]["ftp_folders"][j][0] == " ":
+                    profiles[i]["ftp_folders"][j] = profiles[i]["ftp_folders"][j][1:]
 
             profiles[i]["ignore_list"] = __addon__.getSetting("ignore_list" + str(i))
             try:
