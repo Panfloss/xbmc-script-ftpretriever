@@ -11,6 +11,6 @@ An XBMC addon to retrieve ftp content
  * Better notification(actually progressing progress bar)
  * can handle shutdown during process
 * 0.3.0:
- * implemente xbmc.cvfs tout manage different protocols for local_folder
+ * implemente xbmc.cvfs to manage different protocols for local_folder
 * 1.0.0:
  * Auto sync (cron like or cron itself)
