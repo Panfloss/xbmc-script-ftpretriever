@@ -1,7 +1,62 @@
 import json
+import re
 import xbmcaddon
 
 __addon__ = __addon__ = xbmcaddon.Addon()
+
+def getIncludeList(index):
+    """
+    Return a re compile expression for files to include
+    """
+    if __addon__.getSetting("useInclude" + str(index)) == False:
+        return None
+    else:
+        includeList = []
+        if __addon__.getSetting("includeVids" + str(index)) == True:
+            includeList.append("\.avi$")
+            includeList.append("\.mkv$")
+            includeList.append("\.mp4$")
+            includeList.append("\.webm$")
+            includeList.append("\.mov$")
+            includeList.append("\.m4v$")
+            includeList.append("\.srt$")
+            includeList.append("\.sub$")
+        if __addon__.getSetting("includeAudio" + str(index)) == True:
+            includeList.append("\.mp3$")
+            includeList.append("\.aac$")
+            includeList.append("\.ogg$")
+            includeList.append("\.oga$")
+            includeList.append("\.wma$")
+            includeList.append("\.wav$")
+            includeList.append("\.flac$")
+            includeList.append("\.alac$")
+        if __addon__.getSetting("includeImg" + str(index)) == True:
+            includeList.append("\.jpg$")
+            includeList.append("\.jpeg$")
+            includeList.append("\.png$")
+            includeList.append("\.bpm$")
+            includeList.append("\.gif$")
+            includeList.append("\.webp$")
+
+        return re.compile("|".join(includeList), re.I)
+
+def getIgnoreList(index):
+    """
+    Return a re compile expression for files to ignore
+    """
+    if __addon__.getSetting("useIgnore" + str(index)) == False:
+        return None
+    else:
+        ignoreList = []
+        if __addon__.getSetting("ignoreNfo" + str(index)) == True:
+            ignoreList.append("\.nfo$")
+            ignoreList.append("\.info$")
+            ignoreList.append("\.txt$")
+            ignoreList.append("\.meta$")
+        if __addon__.getSetting("ignoreSample" + str(index)) == True:
+            ignoreList.append("/sample/")
+
+    return re.compile("|".join(ignoreList), re.I)
 
 def getSettings():
     """
@@ -28,11 +83,9 @@ def getSettings():
                 while profiles[i]["ftp_folders"][j][0] == " ":
                     profiles[i]["ftp_folders"][j] = profiles[i]["ftp_folders"][j][1:]
 
-            profiles[i]["ignore_list"] = __addon__.getSetting("ignore_list" + str(i))
-            try:
-                profiles[i]["ignore_list"]= json.loads(profiles[i]["ignore_list"])
-            except ValueError:
-                profiles[i]["ignore_list"] = []
+            profiles[i]["ignore_list"] = getIgnoreList(i)
+
+            profiles[i]["include_list"] = getIncludeList(i)
 
             profiles[i]["deeds_list"] = __addon__.getSetting("deeds_list" + str(i))
             try:

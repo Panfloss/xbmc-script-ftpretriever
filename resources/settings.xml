@@ -5,54 +5,114 @@
         <setting label="FTP host URL" type="text"   id="host0" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username0" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password0" option="hidden" default="" enable="eq(-3,true)"/>
+
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder0" default="" enable="eq(-5,true)"/>
         <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders0" default="" enable="eq(-6,true)"/>
-        <setting label="Ignore List" type="text"   id="ignore_list0" default="" visible="false" enable="eq(-7,true)"/>
-        <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-8,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable include filter" type="Bool" id="useInclude0" default="false" enable="eq(-8,true)"/>
+        <setting label="Download video files (with subs)" type="Bool" id="includeVids0" default="false" enable="eq(-9,true) + eq(-1,true)"/>
+        <setting label="Download audio files" type="Bool" id="includeAudio0" default="false" enable="eq(-10,true) + eq(-2,true)"/>
+        <setting label="Download image files" type="Bool" id="includeImg0" default="false" enable="eq(-11,true) + eq(-3,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable ignore filter" type="Bool" id="useIgnore0" default="false" enable="eq(-13,true)"/>
+        <setting label="Prevent Download of information files files (txt,nfo...)" type="Bool" id="ignoreNfo0" default="false" enable="eq(-14,true) + eq(-1,true)"/>
+        <setting label="Prevent Download of sample folders" type="Bool" id="ignoreSample0" default="false" enable="eq(-15,true) + eq(-2,true)"/>
+
+        <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 1">
-        <setting label="Enable profile" type="Bool" id="activate1" default="false"/>
+        <setting label="Enable profile" type="Bool" id="activate1" default="true"/>
         <setting label="FTP host URL" type="text"   id="host1" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username1" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password1" option="hidden" default="" enable="eq(-3,true)"/>
+
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder1" default="" enable="eq(-5,true)"/>
         <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders1" default="" enable="eq(-6,true)"/>
-        <setting label="Ignore List" type="text"   id="ignore_list1" default="" visible="false" enable="eq(-7,true)"/>
-        <setting label="Deeds List" type="text"   id="deeds_list1" default="" visible="false" enable="eq(-8,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable include filter" type="Bool" id="useInclude1" default="false" enable="eq(-8,true)"/>
+        <setting label="Download video files (with subs)" type="Bool" id="includeVids1" default="false" enable="eq(-9,true) + eq(-1,true)"/>
+        <setting label="Download audio files" type="Bool" id="includeAudio1" default="false" enable="eq(-10,true) + eq(-2,true)"/>
+        <setting label="Download image files" type="Bool" id="includeImg1" default="false" enable="eq(-11,true) + eq(-3,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable ignore filter" type="Bool" id="useIgnore1" default="false" enable="eq(-13,true)"/>
+        <setting label="Prevent Download of information files files (txt,nfo...)" type="Bool" id="ignoreNfo1" default="false" enable="eq(-14,true) + eq(-1,true)"/>
+        <setting label="Prevent Download of sample folders" type="Bool" id="ignoreSample1" default="false" enable="eq(-15,true) + eq(-2,true)"/>
+
+        <setting label="Deeds List" type="text"   id="deeds_list1" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 2">
-        <setting label="Enable profile" type="Bool" id="activate2" default="false"/>
+        <setting label="Enable profile" type="Bool" id="activate2" default="true"/>
         <setting label="FTP host URL" type="text"   id="host2" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username2" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password2" option="hidden" default="" enable="eq(-3,true)"/>
+
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder2" default="" enable="eq(-5,true)"/>
         <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders2" default="" enable="eq(-6,true)"/>
-        <setting label="Ignore List" type="text"   id="ignore_list2" default="" visible="false" enable="eq(-7,true)"/>
-        <setting label="Deeds List" type="text"   id="deeds_list2" default="" visible="false" enable="eq(-8,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable include filter" type="Bool" id="useInclude2" default="false" enable="eq(-8,true)"/>
+        <setting label="Download video files (with subs)" type="Bool" id="includeVids2" default="false" enable="eq(-9,true) + eq(-1,true)"/>
+        <setting label="Download audio files" type="Bool" id="includeAudio2" default="false" enable="eq(-10,true) + eq(-2,true)"/>
+        <setting label="Download image files" type="Bool" id="includeImg2" default="false" enable="eq(-11,true) + eq(-3,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable ignore filter" type="Bool" id="useIgnore2" default="false" enable="eq(-13,true)"/>
+        <setting label="Prevent Download of information files files (txt,nfo...)" type="Bool" id="ignoreNfo2" default="false" enable="eq(-14,true) + eq(-1,true)"/>
+        <setting label="Prevent Download of sample folders" type="Bool" id="ignoreSample2" default="false" enable="eq(-15,true) + eq(-2,true)"/>
+
+        <setting label="Deeds List" type="text"   id="deeds_list2" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 3">
-        <setting label="Enable profile" type="Bool" id="activate3" default="false"/>
+        <setting label="Enable profile" type="Bool" id="activate3" default="true"/>
         <setting label="FTP host URL" type="text"   id="host3" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username3" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password3" option="hidden" default="" enable="eq(-3,true)"/>
+
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder3" default="" enable="eq(-5,true)"/>
         <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders3" default="" enable="eq(-6,true)"/>
-        <setting label="Ignore List" type="text"   id="ignore_list3" default="" visible="false" enable="eq(-7,true)"/>
-        <setting label="Deeds List" type="text"   id="deeds_list3" default="" visible="false" enable="eq(-8,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable include filter" type="Bool" id="useInclude3" default="false" enable="eq(-8,true)"/>
+        <setting label="Download video files (with subs)" type="Bool" id="includeVids3" default="false" enable="eq(-9,true) + eq(-1,true)"/>
+        <setting label="Download audio files" type="Bool" id="includeAudio3" default="false" enable="eq(-10,true) + eq(-2,true)"/>
+        <setting label="Download image files" type="Bool" id="includeImg3" default="false" enable="eq(-11,true) + eq(-3,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable ignore filter" type="Bool" id="useIgnore3" default="false" enable="eq(-13,true)"/>
+        <setting label="Prevent Download of information files files (txt,nfo...)" type="Bool" id="ignoreNfo3" default="false" enable="eq(-14,true) + eq(-1,true)"/>
+        <setting label="Prevent Download of sample folders" type="Bool" id="ignoreSample3" default="false" enable="eq(-15,true) + eq(-2,true)"/>
+
+        <setting label="Deeds List" type="text"   id="deeds_list3" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 4">
-        <setting label="Enable profile" type="Bool" id="activate4" default="false"/>
+        <setting label="Enable profile" type="Bool" id="activate4" default="true"/>
         <setting label="FTP host URL" type="text"   id="host4" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username4" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password4" option="hidden" default="" enable="eq(-3,true)"/>
+
         <setting label="Folder settings" type="lsep"/>
         <setting label="Local folder" type="folder"   id="local_folder4" default="" enable="eq(-5,true)"/>
         <setting label="Distant folders path (comma separated list)" type="text"   id="distant_folders4" default="" enable="eq(-6,true)"/>
-        <setting label="Ignore List" type="text"   id="ignore_list4" default="" visible="false" enable="eq(-7,true)"/>
-        <setting label="Deeds List" type="text"   id="deeds_list4" default="" visible="false" enable="eq(-8,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable include filter" type="Bool" id="useInclude4" default="false" enable="eq(-8,true)"/>
+        <setting label="Download video files (with subs)" type="Bool" id="includeVids4" default="false" enable="eq(-9,true) + eq(-1,true)"/>
+        <setting label="Download audio files" type="Bool" id="includeAudio4" default="false" enable="eq(-10,true) + eq(-2,true)"/>
+        <setting label="Download image files" type="Bool" id="includeImg4" default="false" enable="eq(-11,true) + eq(-3,true)"/>
+
+        <setting label="Select type of files to download (download all if disabled)" type="lsep"/>
+        <setting label="Enable ignore filter" type="Bool" id="useIgnore4" default="false" enable="eq(-13,true)"/>
+        <setting label="Prevent Download of information files files (txt,nfo...)" type="Bool" id="ignoreNfo4" default="false" enable="eq(-14,true) + eq(-1,true)"/>
+        <setting label="Prevent Download of sample folders" type="Bool" id="ignoreSample4" default="false" enable="eq(-15,true) + eq(-2,true)"/>
+
+        <setting label="Deeds List" type="text"   id="deeds_list4" default="" visible="false" enable="eq(-16,true)"/>
     </category>
 </settings>

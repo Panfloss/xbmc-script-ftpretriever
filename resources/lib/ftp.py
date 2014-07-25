@@ -1,6 +1,7 @@
 import settings
 import os
 import ui
+import json
 from ftplib import FTP
 
 class FtpSession(object):
@@ -12,9 +13,9 @@ class FtpSession(object):
         self._passwd = profile["passwd"]
         self._local_folder = profile["local_folder"]
         self._ftp_folders = profile["ftp_folders"]
-        self._ignore_list = profile["ignore_list"]
+        self._include = profile["include_list"]
+        self._ignore = profile["ignore_list"]
         self._deeds_list = profile["deeds_list"]
-
         self._tasklist = []
 
         self._profile_index = index
@@ -35,35 +36,61 @@ class FtpSession(object):
         else:
             return content
 
-    def _populate_tasklist(self, folders):
-        """make the recursion for creating a tasklist"""
+    def _create_tasklist(self, folders):
+        """Generate the tasklist recursively
+        """
+
         for item in folders:
             content = self._is_folder(item)
             if content is False:
                 self._tasklist.append(item)
             else:
-                self._populate_tasklist(content)
+                self._create_tasklist(content)
 
-    def _create_tasklist(self):
-        """Generate the list of file to get
-        wrapper for recursive function
+    def _filter_tasklist(self):
+        """
+        Remove element already on deeds_list
+        and element matching with ignore_list
+        Allow only element matching include_list if it is populated
         """
 
-        for item in self._ftp_folders:
-            content = self._ftp.nlst(item)
-            ignored = []
-            for elt in content:
-                if elt in self._ignore_list:
-                    ignored.append(elt)
+        filtered = []
 
-            for elt in ignored:
-                content.remove(elt)
+        #make sure no element already downloaded is in tasklist
+        for elt in self._tasklist:
+            if elt in self._deeds_list:
+                filtered.append(elt)
 
-            self._populate_tasklist(content)
+        if self._include != None:
+            #make sure each element in tasklist match include list
+            for elt in self._tasklist:
+                if self._include.search(elt) is not None:
+                    if elt not in filtered:
+                        filtered.append(elt)
+
+        #  if self._ignore != None:
+        #     #make sure no element in tasklist match ignore list
+        #     for elt in self._tasklist:
+        #         if self._ignore.search(elt) is None:
+        #             if elt not in filtered:
+        #                 filtered.append(elt)
+
+        for elt in filtered:
+            self._tasklist.remove(elt)
+
+    def _filter_deeds_list(self):
+        """
+        Remove element no more on the distant folder (not in tasklist this time)
+        """
+
+        filtered = []
 
         for elt in self._deeds_list:
-            if elt in self._tasklist:
-                self._tasklist.remove(elt)
+            if elt not in self._tasklist:
+                filtered.append(elt)
+
+        for elt in filtered:
+            self._deeds_list.remove(elt)
 
     def _create_hierarchy(self, file_path):
         """create the folder hierarchy for the file"""
@@ -103,7 +130,8 @@ class FtpSession(object):
             local_path = self._create_hierarchy(file_path)
             with open(local_path, "wb") as file:
                 self._ftp.retrbinary('RETR %s' % file_path, file.write)
-            self._tasklist.pop(0)
+
+            self._deeds_list.append(self._tasklist.pop(0))
             settings.saveDeedsList(self._deeds_list, self._profile_index)
 
     def sync_folder(self):
@@ -113,15 +141,17 @@ class FtpSession(object):
         self._connect_ftp()
         os.chdir(self._local_folder)
 
-        self._create_tasklist()
+        self._create_tasklist(self._ftp_folders)
+        self._filter_deeds_list()
+        self._filter_tasklist()
+        with open('/home/panfloss/tlist', 'w') as file:
+            json.dump(self._tasklist, file)
+
+
         self._execute_tasks()
 
-        self._ignore_list = []
-        for folder in self._ftp_folders:
-            self._ignore_list += self._ftp.nlst(folder)
-        settings.saveIgnoreList(self._ignore_list, self._profile_index)
-
-        settings.saveDeedsList([], self._profile_index)
+        with open('/home/panfloss/list', 'w') as file:
+            json.dump(self._deeds_list, file)
 
         self._ftp.quit()
         self._progressBar.close()
