@@ -64,16 +64,16 @@ class FtpSession(object):
         if self._include != None:
             #make sure each element in tasklist match include list
             for elt in self._tasklist:
-                if self._include.search(elt) is not None:
+                if self._include.search(elt) is None:
                     if elt not in filtered:
                         filtered.append(elt)
 
-        #  if self._ignore != None:
-        #     #make sure no element in tasklist match ignore list
-        #     for elt in self._tasklist:
-        #         if self._ignore.search(elt) is None:
-        #             if elt not in filtered:
-        #                 filtered.append(elt)
+         if self._ignore != None:
+            #make sure no element in tasklist match ignore list
+            for elt in self._tasklist:
+                if self._ignore.search(elt) is not None:
+                    if elt not in filtered:
+                        filtered.append(elt)
 
         for elt in filtered:
             self._tasklist.remove(elt)
