@@ -24,7 +24,7 @@
         <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 1">
-        <setting label="Enable profile" type="Bool" id="activate1" default="true"/>
+        <setting label="Enable profile" type="Bool" id="activate1" default="false"/>
         <setting label="FTP host URL" type="text"   id="host1" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username1" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password1" option="hidden" default="" enable="eq(-3,true)"/>
@@ -47,7 +47,7 @@
         <setting label="Deeds List" type="text"   id="deeds_list1" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 2">
-        <setting label="Enable profile" type="Bool" id="activate2" default="true"/>
+        <setting label="Enable profile" type="Bool" id="activate2" default="false"/>
         <setting label="FTP host URL" type="text"   id="host2" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username2" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password2" option="hidden" default="" enable="eq(-3,true)"/>
@@ -70,7 +70,7 @@
         <setting label="Deeds List" type="text"   id="deeds_list2" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 3">
-        <setting label="Enable profile" type="Bool" id="activate3" default="true"/>
+        <setting label="Enable profile" type="Bool" id="activate3" default="false"/>
         <setting label="FTP host URL" type="text"   id="host3" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username3" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password3" option="hidden" default="" enable="eq(-3,true)"/>
@@ -93,7 +93,7 @@
         <setting label="Deeds List" type="text"   id="deeds_list3" default="" visible="false" enable="eq(-16,true)"/>
     </category>
     <category label="Profile 4">
-        <setting label="Enable profile" type="Bool" id="activate4" default="true"/>
+        <setting label="Enable profile" type="Bool" id="activate4" default="false"/>
         <setting label="FTP host URL" type="text"   id="host4" default="" enable="eq(-1,true)"/>
         <setting label="User" type="text"   id="username4" default="" enable="eq(-2,true)"/>
         <setting label="Password" type="text"   id="password4" option="hidden" default="" enable="eq(-3,true)"/>
