@@ -68,7 +68,7 @@ class FtpSession(object):
                     if elt not in filtered:
                         filtered.append(elt)
 
-         if self._ignore != None:
+        if self._ignore != None:
             #make sure no element in tasklist match ignore list
             for elt in self._tasklist:
                 if self._ignore.search(elt) is not None:
