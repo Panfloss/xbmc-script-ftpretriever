@@ -144,14 +144,8 @@ class FtpSession(object):
         self._create_tasklist(self._ftp_folders)
         self._filter_deeds_list()
         self._filter_tasklist()
-        with open('/home/panfloss/tlist', 'w') as file:
-            json.dump(self._tasklist, file)
-
 
         self._execute_tasks()
-
-        with open('/home/panfloss/list', 'w') as file:
-            json.dump(self._deeds_list, file)
 
         self._ftp.quit()
         self._progressBar.close()
