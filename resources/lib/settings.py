@@ -8,11 +8,11 @@ def getIncludeList(index):
     """
     Return a re compile expression for files to include
     """
-    if __addon__.getSetting("useInclude" + str(index)) == False:
+    if __addon__.getSetting("useInclude" + str(index)) == "false":
         return None
     else:
         includeList = []
-        if __addon__.getSetting("includeVids" + str(index)) == True:
+        if __addon__.getSetting("includeVids" + str(index)) == "true":
             includeList.append("\.avi$")
             includeList.append("\.mkv$")
             includeList.append("\.mp4$")
@@ -21,7 +21,7 @@ def getIncludeList(index):
             includeList.append("\.m4v$")
             includeList.append("\.srt$")
             includeList.append("\.sub$")
-        if __addon__.getSetting("includeAudio" + str(index)) == True:
+        if __addon__.getSetting("includeAudio" + str(index)) == "true":
             includeList.append("\.mp3$")
             includeList.append("\.aac$")
             includeList.append("\.ogg$")
@@ -30,7 +30,7 @@ def getIncludeList(index):
             includeList.append("\.wav$")
             includeList.append("\.flac$")
             includeList.append("\.alac$")
-        if __addon__.getSetting("includeImg" + str(index)) == True:
+        if __addon__.getSetting("includeImg" + str(index)) == "true":
             includeList.append("\.jpg$")
             includeList.append("\.jpeg$")
             includeList.append("\.png$")
@@ -44,16 +44,16 @@ def getIgnoreList(index):
     """
     Return a re compile expression for files to ignore
     """
-    if __addon__.getSetting("useIgnore" + str(index)) == False:
+    if __addon__.getSetting("useIgnore" + str(index)) == "false":
         return None
     else:
         ignoreList = []
-        if __addon__.getSetting("ignoreNfo" + str(index)) == True:
+        if __addon__.getSetting("ignoreNfo" + str(index)) == "true":
             ignoreList.append("\.nfo$")
             ignoreList.append("\.info$")
             ignoreList.append("\.txt$")
             ignoreList.append("\.meta$")
-        if __addon__.getSetting("ignoreSample" + str(index)) == True:
+        if __addon__.getSetting("ignoreSample" + str(index)) == "true":
             ignoreList.append("/sample/")
 
     return re.compile("|".join(ignoreList), re.I)
