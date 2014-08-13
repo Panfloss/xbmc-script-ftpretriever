@@ -1,5 +1,5 @@
 import settings
-import os
+import xbmcvfs
 import ui
 import json
 from ftplib import FTP
@@ -94,26 +94,26 @@ class FtpSession(object):
 
     def _create_hierarchy(self, file_path):
         """create the folder hierarchy for the file"""
-        
+
         #isolate the hierachy from ftp_folder
         for folder in self._ftp_folders:
             if file_path[:len(folder)] == folder:
                 file_path = file_path[len(folder):]
             if file_path[0] == '/':
                 file_path = file_path[1:]
-        
+
         file_path = file_path.split("/")
         file_name = file_path[-1]
         folder_path = "/".join(file_path[:-1])
-        
-        #incorporate local_folder path into file_path      
+
+        #incorporate local_folder path into file_path
         if self._local_folder[-1] == "/":
             folder_path = self._local_folder + folder_path
         else:
             folder_path = self._local_folder + "/" + folder_path
 
         try:
-            os.makedirs(folder_path))
+            xbmcvfs.mkdirs(folder_path)
         except:
             pass
 
@@ -133,8 +133,9 @@ class FtpSession(object):
             self._progressBar.update_file_dl(file_name, tot_files, file_number)
 
             local_path = self._create_hierarchy(file_path)
-            with open(local_path, "wb") as file:
-                self._ftp.retrbinary('RETR %s' % file_path, file.write)
+            file = xbmcvfs.File(local_path, "wb")
+            self._ftp.retrbinary('RETR %s' % file_path, file.write)
+            file.close()
 
             self._deeds_list.append(self._tasklist.pop(0))
             settings.saveDeedsList(self._deeds_list, self._profile_index)
