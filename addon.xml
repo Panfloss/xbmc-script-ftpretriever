@@ -8,14 +8,17 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Easily retrieve your files from an FTP server</summary>
-    <description lang="en">This add-on let's you retrieve your files from an FTP server. It make sure that a file is only downloaded once even after it was moved out of the local folder</description>
+    <description lang="en">
+      This add-on let's you retrieve your files from an FTP server. 
+      It make sure that a file is only downloaded once even after it was moved out of the local folder.
+      You can set the type of files to download with some exclusion and inclusion list
+      The local folder can be on a windows share drive or other network drive handled by xbmc
+    </description>
     <disclaimer lang="en"></disclaimer>
     <language></language>
     <platform>all</platform>
-    <license></license>
+    <license>The MIT License</license>
     <forum></forum>
-    <website></website>
-    <email></email>
-    <source></source>
+    <source>https://github.com/Panfloss/xbmc-script-ftpretriever</source>
   </extension>
 </addon>
