@@ -94,25 +94,30 @@ class FtpSession(object):
 
     def _create_hierarchy(self, file_path):
         """create the folder hierarchy for the file"""
-
+        
+        #isolate the hierachy from ftp_folder
         for folder in self._ftp_folders:
             if file_path[:len(folder)] == folder:
                 file_path = file_path[len(folder):]
             if file_path[0] == '/':
                 file_path = file_path[1:]
-
+        
         file_path = file_path.split("/")
+        file_name = file_path[-1]
+        folder_path = "/".join(file_path[:-1])
+        
+        #incorporate local_folder path into file_path      
+        if self._local_folder[-1] == "/":
+            folder_path = self._local_folder + folder_path
+        else:
+            folder_path = self._local_folder + "/" + folder_path
 
-        if len(file_path) > 1:
-            path = ""
-            for folder in file_path[:-1]:
-                path += folder + "/"
-                try:
-                    os.mkdir(path)
-                except OSError:
-                    pass
+        try:
+            os.makedirs(folder_path))
+        except:
+            pass
 
-        return "/".join(file_path)
+        return folder_path + "/" + file_name
 
     def _execute_tasks(self):
         """Sequentialy execute download tasks"""
@@ -139,7 +144,6 @@ class FtpSession(object):
         """
 
         self._connect_ftp()
-        os.chdir(self._local_folder)
 
         self._create_tasklist(self._ftp_folders)
         self._filter_deeds_list()

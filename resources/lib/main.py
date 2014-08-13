@@ -3,8 +3,6 @@ import ui
 import settings
 import xbmc
 import xbmcaddon
-import os
-import json
 
 __addon__ = xbmcaddon.Addon()
 __addonname__ = __addon__.getAddonInfo('name')
