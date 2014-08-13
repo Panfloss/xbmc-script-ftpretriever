@@ -1,0 +1,21 @@
+Version 0.3.0
+
+- use xbmcvfs instead of os commands so can now download to smb or nfs drive
+
+Version 0.2.0
+
+- enable usage of include and exclude criterions
+- enable multiple profiles
+
+Version 0.1.1
+
+- now store data in the settings and not in an external json file 
+
+Version 0.1.0
+
+- new algorithm for downloading files and storing already downloaded ones
+- better notifications
+
+Version 0.0.1
+
+- download file and remember the one already downloaded
