@@ -2,7 +2,7 @@ import json
 import re
 import xbmcaddon
 
-__addon__ = __addon__ = xbmcaddon.Addon()
+__addon__ = xbmcaddon.Addon()
 
 def getIncludeList(index):
     """
