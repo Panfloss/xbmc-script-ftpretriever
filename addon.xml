@@ -15,7 +15,7 @@
       The local folder can be on a windows share drive or other network drive handled by xbmc
     </description>
     <disclaimer lang="en"></disclaimer>
-    <language>en</language>
+    <language></language>
     <platform>all</platform>
     <license>The MIT License</license>
     <forum></forum>
