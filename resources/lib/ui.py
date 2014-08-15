@@ -10,10 +10,10 @@ class SyncProgressBarBG(object):
     def __init__(self, heading):
         "create the DialogProgressBG "
 
+        self.language = sys.modules["__main__"].language
+        
         self._pDialog = xbmcgui.DialogProgressBG()
         self._pDialog.create(heading, self.language(32000))
-        
-        self.language = sys.modules["__main__"].language
 
     def update(self, percent, msg):
         "wrap the update function"
