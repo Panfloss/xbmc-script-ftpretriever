@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<strings>
+    <string id="30000">Profile 0</string>
+    <string id="30001">Profile 1</string>
+    <string id="30002">Profile 2</string>
+    <string id="30003">Profile 3</string>
+    <string id="30004">Profile 4</string>
+    
+    <string id="30100">Enable profile</string>
+    <string id="30110">FTP host URL</string>
+    <string id="30120">User</string>
+    <string id="30130">Password</string>
+    <string id="30140">Folder settings</string>
+    <string id="30150">Local folder</string>
+    <string id="30160">Distant folders path (comma separated list)</string>
+    <string id="30170">Select type of files to download (download all if disabled)</string>
+    <string id="30180">Enable include filter</string>
+    <string id="30190">Download video files (with subs)</string>
+    <string id="30200">Download audio files</string>
+    <string id="30210">Download image files</string>
+    <string id="30220">Prevent Download of information files files (txt,nfo...)</string>
+    <string id="30230">Prevent Download of sample folders</string>
+    <string id="30240">Enable ignore filter</string>
+    
+    <string id="31000"> : Total progress</string>
+    <string id="32000">Setting up...</string>
+    <string id="32001">downloading file {}/{} : {}</string>
+    <string id="32002">Profile {}/{} : {}</string>
+</strings>
+        
+
+
+

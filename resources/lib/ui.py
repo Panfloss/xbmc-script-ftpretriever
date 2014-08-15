@@ -1,4 +1,5 @@
 import xbmcgui
+import sys
 
 
 class SyncProgressBarBG(object):
@@ -10,7 +11,9 @@ class SyncProgressBarBG(object):
         "create the DialogProgressBG "
 
         self._pDialog = xbmcgui.DialogProgressBG()
-        self._pDialog.create(heading, 'Setting up...')
+        self._pDialog.create(heading, self.language(32000))
+        
+        self.language = sys.modules["__main__"].language
 
     def update(self, percent, msg):
         "wrap the update function"
@@ -20,12 +23,12 @@ class SyncProgressBarBG(object):
     def update_file_dl(self, file_name, tot_files, file_number):
         "specialized update fn for when downloading file"
 
-        self._pDialog.update(file_number*100 / tot_files, message="downloading file {}/{} : {}" .format(file_number, tot_files, file_name))
+        self._pDialog.update(file_number*100 / tot_files, message=self.language(32001).format(file_number, tot_files, file_name))
 
     def update_profile(self, tot_profile, profile_number, profile_host):
         "specialized update fn for when changing profile"
 
-        self._pDialog.update(profile_number*100 / tot_profile , message="Profile {}/{} : {}" .format(profile_number, tot_profile, profile_host))
+        self._pDialog.update(profile_number*100 / tot_profile , message=self.language(32002).format(profile_number, tot_profile, profile_host))
 
     def close(self):
         """
