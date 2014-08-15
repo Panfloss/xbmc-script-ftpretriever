@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <category label="30000">
+    <category label="30099">
         <setting label="30100" type="Bool" id="activate0" default="true"/>
         <setting label="30110" type="text"   id="host0" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username0" default="" enable="eq(-2,true)"/>

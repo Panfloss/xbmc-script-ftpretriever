@@ -4,7 +4,7 @@ import resources.lib.settings as settings
 import xbmc
 import xbmcaddon
 
-__addon__ = xbmcaddon.Addon()
+__addon__ = xbmcaddon.Addon(id="service.ftpretriever")
 __addonname__ = __addon__.getAddonInfo('name')
 __icon__ = __addon__.getAddonInfo('icon')
 __profile__ = xbmc.translatePath(__addon__.getAddonInfo('profile')).decode("utf-8")
