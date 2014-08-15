@@ -16,7 +16,7 @@
         <setting label="30200" type="Bool" id="includeAudio0" default="false" enable="eq(-10,true) + eq(-2,true)"/>
         <setting label="30210" type="Bool" id="includeImg0" default="false" enable="eq(-11,true) + eq(-3,true)"/>
 
-        <setting label="30170" type="lsep"/>
+        <setting type="sep"/>
         <setting label="30240" type="Bool" id="useIgnore0" default="false" enable="eq(-13,true)"/>
         <setting label="30220" type="Bool" id="ignoreNfo0" default="false" enable="eq(-14,true) + eq(-1,true)"/>
         <setting label="30230" type="Bool" id="ignoreSample0" default="false" enable="eq(-15,true) + eq(-2,true)"/>
@@ -39,7 +39,7 @@
         <setting label="30200" type="Bool" id="includeAudio1" default="false" enable="eq(-10,true) + eq(-2,true)"/>
         <setting label="30210" type="Bool" id="includeImg1" default="false" enable="eq(-11,true) + eq(-3,true)"/>
 
-        <setting label="30170" type="lsep"/>
+        <setting type="sep"/>
         <setting label="30240" type="Bool" id="useIgnore1" default="false" enable="eq(-13,true)"/>
         <setting label="30220" type="Bool" id="ignoreNfo1" default="false" enable="eq(-14,true) + eq(-1,true)"/>
         <setting label="30230" type="Bool" id="ignoreSample1" default="false" enable="eq(-15,true) + eq(-2,true)"/>
@@ -62,7 +62,7 @@
         <setting label="30200" type="Bool" id="includeAudio2" default="false" enable="eq(-10,true) + eq(-2,true)"/>
         <setting label="30210" type="Bool" id="includeImg2" default="false" enable="eq(-11,true) + eq(-3,true)"/>
 
-        <setting label="30170" type="lsep"/>
+        <setting type="sep"/>
         <setting label="30240" type="Bool" id="useIgnore2" default="false" enable="eq(-13,true)"/>
         <setting label="30220" type="Bool" id="ignoreNfo2" default="false" enable="eq(-14,true) + eq(-1,true)"/>
         <setting label="30230" type="Bool" id="ignoreSample2" default="false" enable="eq(-15,true) + eq(-2,true)"/>
@@ -85,7 +85,7 @@
         <setting label="30200" type="Bool" id="includeAudio3" default="false" enable="eq(-10,true) + eq(-2,true)"/>
         <setting label="30210" type="Bool" id="includeImg3" default="false" enable="eq(-11,true) + eq(-3,true)"/>
 
-        <setting label="30170" type="lsep"/>
+        <setting type="sep"/>
         <setting label="30240" type="Bool" id="useIgnore3" default="false" enable="eq(-13,true)"/>
         <setting label="30220" type="Bool" id="ignoreNfo3" default="false" enable="eq(-14,true) + eq(-1,true)"/>
         <setting label="30230" type="Bool" id="ignoreSample3" default="false" enable="eq(-15,true) + eq(-2,true)"/>
@@ -108,7 +108,7 @@
         <setting label="30200" type="Bool" id="includeAudio4" default="false" enable="eq(-10,true) + eq(-2,true)"/>
         <setting label="30210" type="Bool" id="includeImg4" default="false" enable="eq(-11,true) + eq(-3,true)"/>
 
-        <setting label="30170" type="lsep"/>
+        <setting type="sep"/>
         <setting label="30240" type="Bool" id="useIgnore4" default="false" enable="eq(-13,true)"/>
         <setting label="30220" type="Bool" id="ignoreNfo4" default="false" enable="eq(-14,true) + eq(-1,true)"/>
         <setting label="30230" type="Bool" id="ignoreSample4" default="false" enable="eq(-15,true) + eq(-2,true)"/>

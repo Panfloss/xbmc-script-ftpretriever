@@ -1,3 +1,8 @@
+Version 0.3.1
+
+- use localized string instead of hard coded ones
+- code refactoring
+
 Version 0.3.0
 
 - use xbmcvfs instead of os commands so can now download to smb or nfs drive
