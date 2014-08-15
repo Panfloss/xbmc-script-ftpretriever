@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 
 <strings>
-    <string id="30099">Profile 0</string>
-    <string id="30001">Profile 1</string>
-    <string id="30002">Profile 2</string>
-    <string id="30003">Profile 3</string>
-    <string id="30004">Profile 4</string>
+    <string id="30001">Profile 0</string>
+    <string id="30002">Profile 1</string>
+    <string id="30003">Profile 2</string>
+    <string id="30004">Profile 3</string>
+    <string id="30005">Profile 4</string>
     
     <string id="30100">Enable profile</string>
     <string id="30110">FTP host URL</string>

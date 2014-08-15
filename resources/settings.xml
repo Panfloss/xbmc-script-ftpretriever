@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <category label="30099">
+    <category label="30001">
         <setting label="30100" type="Bool" id="activate0" default="true"/>
         <setting label="30110" type="text"   id="host0" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username0" default="" enable="eq(-2,true)"/>
@@ -23,7 +23,7 @@
 
         <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-16,true)"/>
     </category>
-    <category label="30001">
+    <category label="30002">
         <setting label="30100" type="Bool" id="activate1" default="false"/>
         <setting label="30110" type="text"   id="host1" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username1" default="" enable="eq(-2,true)"/>
@@ -46,7 +46,7 @@
 
         <setting label="Deeds List" type="text"   id="deeds_list1" default="" visible="false" enable="eq(-16,true)"/>
     </category>
-    <category label="30002">
+    <category label="30003">
         <setting label="30100" type="Bool" id="activate2" default="false"/>
         <setting label="30110" type="text"   id="host2" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username2" default="" enable="eq(-2,true)"/>
@@ -69,7 +69,7 @@
 
         <setting label="Deeds List" type="text"   id="deeds_list2" default="" visible="false" enable="eq(-16,true)"/>
     </category>
-    <category label="30003">
+    <category label="30004">
         <setting label="30100" type="Bool" id="activate3" default="false"/>
         <setting label="30110" type="text"   id="host3" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username3" default="" enable="eq(-2,true)"/>
@@ -92,7 +92,7 @@
 
         <setting label="Deeds List" type="text"   id="deeds_list3" default="" visible="false" enable="eq(-16,true)"/>
     </category>
-    <category label="30004">
+    <category label="30005">
         <setting label="30100" type="Bool" id="activate4" default="false"/>
         <setting label="30110" type="text"   id="host4" default="" enable="eq(-1,true)"/>
         <setting label="30120" type="text"   id="username4" default="" enable="eq(-2,true)"/>
