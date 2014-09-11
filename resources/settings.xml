@@ -22,6 +22,7 @@
         <setting label="30230" type="Bool" id="ignoreSample0" default="false" enable="eq(-15,true) + eq(-2,true)"/>
 
         <setting label="Deeds List" type="text"   id="deeds_list0" default="" visible="false" enable="eq(-16,true)"/>
+        <setting label="In Progress" type="text"   id="inprogress0" default="" visible="false" enable="eq(-17,true)"/>
     </category>
     <category label="30002">
         <setting label="30100" type="Bool" id="activate1" default="false"/>
@@ -45,6 +46,7 @@
         <setting label="30230" type="Bool" id="ignoreSample1" default="false" enable="eq(-15,true) + eq(-2,true)"/>
 
         <setting label="Deeds List" type="text"   id="deeds_list1" default="" visible="false" enable="eq(-16,true)"/>
+        <setting label="In Progress" type="text"   id="inprogress1" default="" visible="false" enable="eq(-17,true)"/>
     </category>
     <category label="30003">
         <setting label="30100" type="Bool" id="activate2" default="false"/>
@@ -68,6 +70,7 @@
         <setting label="30230" type="Bool" id="ignoreSample2" default="false" enable="eq(-15,true) + eq(-2,true)"/>
 
         <setting label="Deeds List" type="text"   id="deeds_list2" default="" visible="false" enable="eq(-16,true)"/>
+        <setting label="In Progress" type="text"   id="inprogress2" default="" visible="false" enable="eq(-17,true)"/>
     </category>
     <category label="30004">
         <setting label="30100" type="Bool" id="activate3" default="false"/>
@@ -91,6 +94,7 @@
         <setting label="30230" type="Bool" id="ignoreSample3" default="false" enable="eq(-15,true) + eq(-2,true)"/>
 
         <setting label="Deeds List" type="text"   id="deeds_list3" default="" visible="false" enable="eq(-16,true)"/>
+        <setting label="In Progress" type="text"   id="inprogress3" default="" visible="false" enable="eq(-17,true)"/>
     </category>
     <category label="30005">
         <setting label="30100" type="Bool" id="activate4" default="false"/>
@@ -114,5 +118,6 @@
         <setting label="30230" type="Bool" id="ignoreSample4" default="false" enable="eq(-15,true) + eq(-2,true)"/>
 
         <setting label="Deeds List" type="text"   id="deeds_list4" default="" visible="false" enable="eq(-16,true)"/>
+        <setting label="In Progress" type="text"   id="inprogress4" default="" visible="false" enable="eq(-17,true)"/>
     </category>
 </settings>

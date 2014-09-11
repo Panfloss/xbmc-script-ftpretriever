@@ -92,6 +92,9 @@ def getSettings():
                 profiles[i]["deeds_list"] = json.loads(profiles[i]["deeds_list"])
             except ValueError:
                 profiles[i]["deeds_list"] = []
+                
+            profiles[i]["inprogress"] = __addon__.getSetting("inprogress" + str(i))
+
         else:
             profiles[i]["activated"] = False
             activated_profiles -= 1
@@ -104,6 +107,13 @@ def saveDeedsList(deeds_list, profile_index):
     """
     json_list = json.dumps(deeds_list, separators=(',',':'))
     __addon__.setSetting("deeds_list" + str(profile_index), json_list)
+
+def saveInprogress(inprogress, profile_index):
+    """
+    save the inprogress string in the addon config
+    """
+    
+    __addon__.setSetting("inprogress" + str(profile_index), inprogress)
 
 def saveIgnoreList(ignore_list, profile_index):
     """

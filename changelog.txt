@@ -1,3 +1,7 @@
+Version 0.3.2
+
+- now take already existing files into account
+
 Version 0.3.1
 
 - use localized string instead of hard coded ones

@@ -16,6 +16,7 @@ class FtpSession(object):
         self._include = profile["include_list"]
         self._ignore = profile["ignore_list"]
         self._deeds_list = profile["deeds_list"]
+        self._inprogress = profile["inprogress"]
         self._tasklist = []
 
         self._profile_index = index
@@ -39,7 +40,7 @@ class FtpSession(object):
     def _create_tasklist(self, folders):
         """Generate the tasklist recursively
         """
-
+        
         for item in folders:
             content = self._is_folder(item)
             if content is False:
@@ -52,10 +53,12 @@ class FtpSession(object):
         Remove element already on deeds_list
         and element matching with ignore_list
         Allow only element matching include_list if it is populated
+        make sure that if there is an inprogress item it is put first on the list
         """
 
         filtered = []
-
+        filtered.append(self._inprogress)
+        
         #make sure no element already downloaded is in tasklist
         for elt in self._tasklist:
             if elt in self._deeds_list:
@@ -77,6 +80,9 @@ class FtpSession(object):
 
         for elt in filtered:
             self._tasklist.remove(elt)
+            
+        if self._inprogress is not "":
+            self._tasklist.insert(0, self._inprogress)
 
     def _filter_deeds_list(self):
         """
@@ -133,10 +139,13 @@ class FtpSession(object):
             self._progressBar.update_file_dl(file_name, tot_files, file_number)
 
             local_path = self._create_hierarchy(file_path)
-            file = xbmcvfs.File(local_path, "wb")
-            self._ftp.retrbinary('RETR %s' % file_path, file.write)
-            file.close()
-
+            if file_path is self._inprogress or not xbmcvfs.exists(local_path):
+                settings.saveInprogress(file_path, self._profile_index)
+                file = xbmcvfs.File(local_path, "wb")
+                self._ftp.retrbinary('RETR %s' % file_path, file.write)
+                file.close()
+            
+            settings.saveInprogress("", self._profile_index)
             self._deeds_list.append(self._tasklist.pop(0))
             settings.saveDeedsList(self._deeds_list, self._profile_index)
 
