@@ -40,7 +40,7 @@ class FtpSession(object):
     def _create_tasklist(self, folders):
         """Generate the tasklist recursively
         """
-        
+
         for item in folders:
             content = self._is_folder(item)
             if content is False:
@@ -57,8 +57,9 @@ class FtpSession(object):
         """
 
         filtered = []
-        filtered.append(self._inprogress)
-        
+        if self._inprogress is not "":
+            filtered.append(self._inprogress)
+
         #make sure no element already downloaded is in tasklist
         for elt in self._tasklist:
             if elt in self._deeds_list:
@@ -80,7 +81,7 @@ class FtpSession(object):
 
         for elt in filtered:
             self._tasklist.remove(elt)
-            
+
         if self._inprogress is not "":
             self._tasklist.insert(0, self._inprogress)
 
@@ -144,7 +145,7 @@ class FtpSession(object):
                 file = xbmcvfs.File(local_path, "wb")
                 self._ftp.retrbinary('RETR %s' % file_path, file.write)
                 file.close()
-            
+
             settings.saveInprogress("", self._profile_index)
             self._deeds_list.append(self._tasklist.pop(0))
             settings.saveDeedsList(self._deeds_list, self._profile_index)
