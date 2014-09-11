@@ -7,7 +7,6 @@ import xbmcaddon
 __addon__ = xbmcaddon.Addon(id="service.ftpretriever")
 __addonname__ = __addon__.getAddonInfo('name')
 __icon__ = __addon__.getAddonInfo('icon')
-__profile__ = xbmc.translatePath(__addon__.getAddonInfo('profile')).decode("utf-8")
 language = __addon__.getLocalizedString
 
 profilePB = ui.SyncProgressBarBG(__addonname__ + language(32010)) #PB wich will show the "profile progression"
