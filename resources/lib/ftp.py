@@ -16,7 +16,7 @@ class FtpSession(object):
         self._include = profile["include_list"]
         self._ignore = profile["ignore_list"]
         self._deeds_list = profile["deeds_list"]
-        self._inprogress = profile["inprogress"]
+        self._inprogress = ""#profile["inprogress"]
         self._tasklist = []
 
         self._profile_index = index
@@ -57,7 +57,9 @@ class FtpSession(object):
         """
 
         filtered = []
-        if self._inprogress is not "":
+        stopedinprogress = self._inprogress in self._tasklist
+
+        if self._inprogress is not "" and stopedinprogress:
             filtered.append(self._inprogress)
 
         #make sure no element already downloaded is in tasklist
@@ -82,7 +84,7 @@ class FtpSession(object):
         for elt in filtered:
             self._tasklist.remove(elt)
 
-        if self._inprogress is not "":
+        if self._inprogress is not "" and stopedinprogress:
             self._tasklist.insert(0, self._inprogress)
 
     def _filter_deeds_list(self):
@@ -137,10 +139,10 @@ class FtpSession(object):
 
             file_name = file_path.split("/")[-1]
             file_number += 1
-            self._progressBar.update_file_dl(file_name, tot_files, file_number)
 
             local_path = self._create_hierarchy(file_path)
             if file_path is self._inprogress or not xbmcvfs.exists(local_path):
+                self._progressBar.update_file_dl(file_name, tot_files, file_number)
                 settings.saveInprogress(file_path, self._profile_index)
                 file = xbmcvfs.File(local_path, "wb")
                 self._ftp.retrbinary('RETR %s' % file_path, file.write)
