@@ -16,7 +16,7 @@ class FtpSession(object):
         self._include = profile["include_list"]
         self._ignore = profile["ignore_list"]
         self._deeds_list = profile["deeds_list"]
-        self._inprogress = ""#profile["inprogress"]
+        self._inprogress = profile["inprogress"]
         self._tasklist = []
 
         self._profile_index = index
