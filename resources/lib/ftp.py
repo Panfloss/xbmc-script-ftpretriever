@@ -100,33 +100,47 @@ class FtpSession(object):
 
         for elt in filtered:
             self._deeds_list.remove(elt)
-
-    def _create_hierarchy(self, file_path):
-        """create the folder hierarchy for the file"""
-
+            
+    
+    def _get_relative_path(self, file_path):
+        """
+        get the relative path of a file
+        the path without the server 'ftp_folder' or the 'local_folder' prefix
+        """
+        
         #isolate the hierachy from ftp_folder
         for folder in self._ftp_folders:
             if file_path[:len(folder)] == folder:
                 file_path = file_path[len(folder):]
+                
             if file_path[0] == '/':
                 file_path = file_path[1:]
 
-        file_path = file_path.split("/")
-        file_name = file_path[-1]
-        folder_path = "/".join(file_path[:-1])
-
-        #incorporate local_folder path into file_path
+        return file_path
+        
+    def _make_local_path(self, relative_path):
+        """
+        get the local path from the relative path
+        """
+        
         if self._local_folder[-1] == "/":
-            folder_path = self._local_folder + folder_path
+            local_path = self._local_folder + relative_path
         else:
-            folder_path = self._local_folder + "/" + folder_path
+            local_path = self._local_folder + "/" + relative_path
+            
+        return local_path
+            
+            
+    def _create_hierarchy(self, file_path):
+        """create the folder hierarchy for the file"""
+
+        file_path = file_path.split("/")
+        folder_path = "/".join(file_path[:-1])
 
         try:
             xbmcvfs.mkdirs(folder_path)
         except:
             pass
-
-        return folder_path + "/" + file_name
 
     def _execute_tasks(self):
         """Sequentialy execute download tasks"""
@@ -140,7 +154,9 @@ class FtpSession(object):
             file_name = file_path.split("/")[-1]
             file_number += 1
 
-            local_path = self._create_hierarchy(file_path)
+            local_path = self._make_local_path(self._get_relative_path(file_path))
+            self._create_hierarchy(local_path)
+            
             if file_path is self._inprogress or not xbmcvfs.exists(local_path):
                 self._progressBar.update_file_dl(file_name, tot_files, file_number)
                 settings.saveInprogress(file_path, self._profile_index)
