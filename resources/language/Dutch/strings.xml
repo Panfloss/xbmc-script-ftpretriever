@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<strings>
+    <string id="30001">Profiel 0</string>
+    <string id="30002">Profiel 1</string>
+    <string id="30003">Profiel 2</string>
+    <string id="30004">Profiel 3</string>
+    <string id="30005">Profiel 4</string>
+    
+    <string id="30100">Activeer profiel</string>
+    <string id="30110">FTP host URL</string>
+    <string id="30120">Gebruiker</string>
+    <string id="30130">Wachtwoord</string>
+    <string id="30140">Map instellingen</string>
+    <string id="30150">Lokale map</string>
+    <string id="30160">Externe mappen (Lijst gescheiden door een komma)</string>
+    <string id="30170">Selecteer de te downloaden bestandstypen (Uitgeschakeld: download alles)</string>
+    <string id="30180">Activeer inclusieve filter</string>
+    <string id="30190">Download video bestanden (met ondertiteling)</string>
+    <string id="30200">Download audio bestanden</string>
+    <string id="30210">Download afbeeldingen</string>
+    <string id="30220">Voorkom het downloaden van informatie bestanden (txt,nfo...)</string>
+    <string id="30230">Voorkom het downloaden van voorbeeld mappen</string>
+    <string id="30240">Activeer exclusieve filter</string>
+    
+    <string id="32010"> : Totale voortgang</string>
+    <string id="32000">Bezig met opzetten...</string>
+    <string id="32001">Bezig met downloaden van {}/{} : {}</string>
+    <string id="32002">Profiel {}/{} : {}</string>
+</strings>
