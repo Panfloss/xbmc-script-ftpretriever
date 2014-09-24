@@ -20,10 +20,18 @@ class SyncProgressBarBG(object):
 
         self._pDialog.update(percent, message=msg)
 
-    def update_file_dl(self, file_name, tot_files, file_number):
+    def update_file_dl(self, file, tot_files, file_number):
         "specialized update fn for when downloading file"
-
-        self._pDialog.update(file_number*100 / tot_files, message=self.language(32001).format(file_number, tot_files, file_name))
+        
+        text = self.language(32001).format(file_number, tot_files, file))
+        
+        #resize "name" if it does not fit in the progress bar (50 chars wide)
+        excess = len(text) - 50
+        if excess > 0:
+            file = file[:len(file)*2/3 - (excess/2)] + file[len(file)*2/3 + (excess/2)+1:]
+            text = self.language(32001).format(file_number, tot_files, file))
+        
+        self._pDialog.update(file_number*100 / tot_files, message=text)
 
     def update_profile(self, tot_profile, profile_number, profile_host):
         "specialized update fn for when changing profile"
