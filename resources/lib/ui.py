@@ -31,7 +31,7 @@ class SyncProgressBarBG(object):
         excess = len(text) - 50
         if excess > 0:
             file = file[:len(file)*2/3 - (excess/2)] + file[len(file)*2/3 + (excess/2)+1:]
-            text = self.language(32001).format(file_number, tot_files, file))
+            text = self.language(32001).format(file_number, tot_files, file)
         
         self._pDialog.update(file_number*100 / tot_files, message=text)
 
