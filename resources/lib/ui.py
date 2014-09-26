@@ -38,7 +38,7 @@ class SyncProgressBarBG(object):
     def update_profile(self, tot_profile, profile_number):
         "specialized update fn for when changing profile"
 
-        self._pDialog.update(profile_number*100 / tot_profile , heading=self._addon_name + " " + self.language(32002).format(profile_number, tot_profile, message= self.language(32000))
+        self._pDialog.update(profile_number*100 / tot_profile , heading=self._addon_name + " " + self.language(32002).format(profile_number, tot_profile, message= self.language(32000)))
 
     def close(self):
         """
