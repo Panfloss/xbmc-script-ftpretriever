@@ -26,7 +26,7 @@
     <string id="32010"> : Total progress</string>
     <string id="32000">Setting up...</string>
     <string id="32001">downloading file {}/{} : {}</string>
-    <string id="32002">Profile {}/{} : {}</string>
+    <string id="32002">(Profile {}/{})</string>
 </strings>
         
 

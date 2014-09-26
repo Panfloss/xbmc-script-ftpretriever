@@ -6,7 +6,7 @@ from ftplib import FTP
 
 class FtpSession(object):
 
-    def __init__(self, profile, index):
+    def __init__(self, profile, index, progress):
 
         self._host = profile["host"]
         self._user = profile["user"]
@@ -21,7 +21,7 @@ class FtpSession(object):
 
         self._profile_index = index
 
-        self._progressBar = ui.SyncProgressBarBG(self._host + " : Progress")
+        self._progressBar = progress
 
 
     def _connect_ftp(self):

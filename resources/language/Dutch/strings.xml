@@ -26,5 +26,5 @@
     <string id="32010"> : Totale voortgang</string>
     <string id="32000">Bezig met opzetten...</string>
     <string id="32001">Bezig met downloaden van {}/{} : {}</string>
-    <string id="32002">Profiel {}/{} : {}</string>
+    <string id="32002">(Profiel {}/{})</string>
 </strings>
