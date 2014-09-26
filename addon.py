@@ -9,7 +9,7 @@ __addonname__ = __addon__.getAddonInfo('name')
 __icon__ = __addon__.getAddonInfo('icon')
 language = __addon__.getLocalizedString
 
-profilePB = ui.SyncProgressBarBG(__addonname__ + language(32010))
+profilePB = ui.SyncProgressBarBG(__addonname__)
 profiles, profile_qtt = settings.getSettings()
 profile_ongoing = 0
 
