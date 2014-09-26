@@ -25,7 +25,7 @@ class SyncProgressBarBG(object):
     def update_file_dl(self, file, tot_files, file_number):
         "specialized update fn for when downloading file"
         
-        text = self.language(32001).format(file_number, tot_files, file))
+        text = self.language(32001).format(file_number, tot_files, file)
         
         #resize "name" if it does not fit in the progress bar (50 chars wide)
         excess = len(text) - 50
