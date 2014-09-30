@@ -1,3 +1,7 @@
+Version 0.3.3
+
+- revised notification system
+
 Version 0.3.2
 
 - now take already existing files into account
