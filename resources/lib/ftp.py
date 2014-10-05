@@ -4,6 +4,8 @@ import ui
 import json
 from ftplib import FTP
 
+import xbmcgui #put it in ui.py after
+
 class FtpSession(object):
 
     def __init__(self, profile, index, progress):
@@ -26,7 +28,13 @@ class FtpSession(object):
 
     def _connect_ftp(self):
         """initiate the ftp sesion"""
-        self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
+        try:
+            self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
+        except ftplib.error_perm:
+            xbmcgui.Dialog().ok("an error occured", "Username or password incorect")
+            return False
+        
+        return True
 
     def _is_folder(self, item):
         """Check if item is a file (False) or a folder (return nlst(folder))"""
@@ -172,13 +180,14 @@ class FtpSession(object):
         """Recursivly sync a FTP folder
         """
 
-        self._connect_ftp()
-
-        self._create_tasklist(self._ftp_folders)
-        self._filter_deeds_list()
-        self._filter_tasklist()
-
-        self._execute_tasks()
-
-        self._ftp.quit()
-        self._progressBar.close()
+        if self._connect_ftp() :
+            self._create_tasklist(self._ftp_folders)
+            self._filter_deeds_list()
+            self._filter_tasklist()
+    
+            self._execute_tasks()
+    
+            self._ftp.quit()
+        else :
+            pass
+            # add a notification explaining the situation here or in _connect_ftp

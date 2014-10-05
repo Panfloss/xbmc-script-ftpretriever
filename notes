@@ -1,0 +1,2 @@
+ftplib.error_perm: 530 Login incorrect. - err login
+socket.gaierror: [Errno 7] getaddrinfo failed - err address
