@@ -1,6 +1,7 @@
 import xbmcgui
 import sys
 
+errors = []
 
 class SyncProgressBarBG(object):
     "class to handle the background progressbar"
@@ -47,4 +48,14 @@ def ftpConnectionError(profile_number, error):
     Function handling the notification of a connection error
     """
     language = sys.modules["__main__"].language
-    xbmcgui.Dialog().ok("XBMC FTP Retriever", language(33001).format(profile_number, error))
+    errors.append'language(33001).format(profile_number, error))
+    
+def notifyErrors():
+    """
+    Pop an ok dialog box if some errors occured
+    """
+    
+    if errors != []:
+        message = "\n".join(errors)
+        xbmcgui.Dialog().ok("XBMC FTP Retriever", language(33000) + message)
+        

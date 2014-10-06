@@ -34,7 +34,6 @@ class FtpSession(object):
             ui.ftpConnectionError(self._profile_index, e)
             return False
 
-
         return True
 
     def _is_folder(self, item):
