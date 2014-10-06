@@ -28,7 +28,7 @@
     <string id="32001">downloading file {}/{} : {}</string>
     <string id="32002"> - Profile {}/{}</string>
 
-    <string id="33001">An error occured while connecting to profile {} : [CR] {}</string>
+    <string id="33001">An error occured while connecting to profile {} : [CR]{}</string>
 </strings>
 
 
