@@ -3,7 +3,6 @@ import xbmcvfs
 import ui
 import json
 import ftplib
-import socket
 
 import xbmcgui #put it in ui.py after
 
@@ -32,10 +31,10 @@ class FtpSession(object):
         try:
             self._ftp = ftplib.FTP(self._host, user=self._user, passwd=self._passwd)
         except ftplib.all_errors as e: # how to catch ftp errors
-            xbmcgui.Dialog().ok("XBMC FTP Retriever", "an error occured while connecting to profile 1 : \n{}".format(e))
+            ui.ftpConnectionError(self._profile_index, e)
             return False
-        
-        
+
+
         return True
 
     def _is_folder(self, item):
@@ -110,37 +109,37 @@ class FtpSession(object):
 
         for elt in filtered:
             self._deeds_list.remove(elt)
-            
-    
+
+
     def _get_relative_path(self, file_path):
         """
         get the relative path of a file
         the path without the server 'ftp_folder' or the 'local_folder' prefix
         """
-        
+
         #isolate the hierachy from ftp_folder
         for folder in self._ftp_folders:
             if file_path[:len(folder)] == folder:
                 file_path = file_path[len(folder):]
-                
+
             if file_path[0] == '/':
                 file_path = file_path[1:]
 
         return file_path
-        
+
     def _make_local_path(self, relative_path):
         """
         get the local path from the relative path
         """
-        
+
         if self._local_folder[-1] == "/":
             local_path = self._local_folder + relative_path
         else:
             local_path = self._local_folder + "/" + relative_path
-            
+
         return local_path
-            
-            
+
+
     def _create_hierarchy(self, file_path):
         """create the folder hierarchy for the file"""
 
@@ -166,7 +165,7 @@ class FtpSession(object):
 
             local_path = self._make_local_path(self._get_relative_path(file_path))
             self._create_hierarchy(local_path)
-            
+
             if file_path is self._inprogress or not xbmcvfs.exists(local_path):
                 self._progressBar.update_file_dl(file_name, tot_files, file_number)
                 settings.saveInprogress(file_path, self._profile_index)
@@ -186,9 +185,9 @@ class FtpSession(object):
             self._create_tasklist(self._ftp_folders)
             self._filter_deeds_list()
             self._filter_tasklist()
-    
+
             self._execute_tasks()
-    
+
             self._ftp.quit()
         else :
             pass

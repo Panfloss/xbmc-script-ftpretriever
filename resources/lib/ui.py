@@ -40,3 +40,11 @@ class SyncProgressBarBG(object):
         """
 
         self._pDialog.close()
+
+
+def ftpConnectionError(profile_number, error):
+    """
+    Function handling the notification of a connection error
+    """
+    
+    xbmcgui.Dialog().ok("XBMC FTP Retriever", self.language(33001).format(profile_number, error))
