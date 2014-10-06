@@ -47,4 +47,4 @@ def ftpConnectionError(profile_number, error):
     Function handling the notification of a connection error
     """
     language = sys.modules["__main__"].language
-    xbmcgui.Dialog().ok("XBMC FTP Retriever", language(32002).format(profile_number, error))
+    xbmcgui.Dialog().ok("XBMC FTP Retriever", language(33001).format(profile_number, error))
