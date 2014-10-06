@@ -2,7 +2,7 @@ import xbmcgui
 import sys
 
 errors = []
-language = None
+language = ""
 
 class SyncProgressBarBG(object):
     "class to handle the background progressbar"
