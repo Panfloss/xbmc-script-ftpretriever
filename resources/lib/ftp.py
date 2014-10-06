@@ -3,6 +3,7 @@ import xbmcvfs
 import ui
 import json
 import ftplib
+import socket
 
 import xbmcgui #put it in ui.py after
 
