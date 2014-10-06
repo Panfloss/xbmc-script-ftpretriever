@@ -45,10 +45,10 @@ class SyncProgressBarBG(object):
 
 def ftpConnectionError(profile_number, error):
     """
-    Function handling the notification of a connection error
+    Function adding connection errors to the list of errors
     """
     language = sys.modules["__main__"].language
-    errors.append'language(33001).format(profile_number, error))
+    errors.append(language(33001).format(profile_number, error))
     
 def notifyErrors():
     """
