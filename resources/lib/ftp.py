@@ -2,7 +2,7 @@ import settings
 import xbmcvfs
 import ui
 import json
-from ftplib import FTP
+import ftplib
 
 import xbmcgui #put it in ui.py after
 
@@ -29,8 +29,8 @@ class FtpSession(object):
     def _connect_ftp(self):
         """initiate the ftp sesion"""
         try:
-            self._ftp = FTP(self._host, user=self._user, passwd=self._passwd)
-        except error_perm:
+            self._ftp = ftplib.FTP(self._host, user=self._user, passwd=self._passwd)
+        except ftplib.error_reply: # how to catch ftp errors
             xbmcgui.Dialog().ok("an error occured", "Username or password incorect")
             return False
         
