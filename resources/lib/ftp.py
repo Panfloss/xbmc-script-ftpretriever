@@ -30,7 +30,7 @@ class FtpSession(object):
         """initiate the ftp sesion"""
         try:
             self._ftp = ftplib.FTP(self._host, user=self._user, passwd=self._passwd)
-        except ftplib.error_reply: # how to catch ftp errors
+        except ftplib.error_perm: # how to catch ftp errors
             xbmcgui.Dialog().ok("an error occured", "Username or password incorect")
             return False
         
