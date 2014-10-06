@@ -33,6 +33,9 @@ class FtpSession(object):
         except ftplib.error_perm: # how to catch ftp errors
             xbmcgui.Dialog().ok("an error occured", "Username or password incorect")
             return False
+        except ftplib.gaierror: # how to catch ftp errors
+            xbmcgui.Dialog().ok("an error occured", "Hostname incorect")
+            return False
         
         return True
 
