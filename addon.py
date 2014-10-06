@@ -22,4 +22,4 @@ for index in range(len(profiles)):
     ftpInstance.sync_folder()
 
 profilePB.close()
-ui.no
+ui.notifyErrors()
