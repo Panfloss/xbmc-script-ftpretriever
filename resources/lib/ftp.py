@@ -32,7 +32,7 @@ class FtpSession(object):
         try:
             self._ftp = ftplib.FTP(self._host, user=self._user, passwd=self._passwd)
         except ftplib.all_errors as e: # how to catch ftp errors
-            xbmcgui.Dialog().ok("XBMC FTP Retriever", "an error occured while connecting to profile 1 : {}".format(e)
+            xbmcgui.Dialog().ok("XBMC FTP Retriever", "an error occured while connecting to profile 1 : {}".format(e))
             return False
         
         
